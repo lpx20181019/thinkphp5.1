@@ -34,4 +34,31 @@ class Demo1
         return $temp->getName();
     }
 
+    //绑定一个类到容器
+    public function bindClass()
+    {
+        //把一个类放到容器中，相当于注册到容器中
+        \think\Container::set('temp','\app\common\Temp');
+
+        //将容器中的类实例化并取出来用，实例化时可调用构造器初始化
+        $temp=\think\Container::get('temp',['name'=>'peter_lin']);
+        return $temp->getName();
+    }
+
+    //绑定一个闭包到容器，闭包理解为一个匿名函数
+    public function bindClosure()
+    {
+        //把一个闭包放到容器中
+        \think\Container::set('demo',function($name){
+            return "我爱---".$name;
+        });
+        /*相当于
+         * $demo=function ($name){
+         * return *******
+         * }
+         */
+
+        //将容器中的闭包实例化并取出来用，实例化时可调用构造器初始化
+        return \think\Container::get('demo',['name'=>'阚清子']);
+    }
 }
