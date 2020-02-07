@@ -20,29 +20,14 @@ Route::get('search/:id/:uid','address/search');
 \think\facade\Route::get('details/:id','Address/details');
 
 
-/*
- * 单词里有两个大写字母
- * HelloWorld
- * 或者
- * hello_world
- */
-\think\facade\Route::get('det-<id>','hello_world/det');
-\think\facade\Route::get('det-<name>-<id>','hello_:name/det');
-
-
-
-
-
 \think\facade\Route::group('col',[
     ':id'=>'Collect/read',
         ':name'=>'Collect/who'
     ]
-)->pattern(['id'=>'\d+$','name'=>'\w+$'])->ext('html');
+)->pattern(['id'=>'\d+$','name'=>'\w+$'])->ext('html')->allowCrossDomain();
 
-Route::group('col1', function () {
-    Route::get(':id', 'Collect/read');
-    Route::get(':name', 'Collect/who');
-})->ext('html')->pattern(['id'=>'\d+$', 'name'=>'\w+$']);
+
+\think\facade\Route::miss('public/miss');
 return [
 
 ];

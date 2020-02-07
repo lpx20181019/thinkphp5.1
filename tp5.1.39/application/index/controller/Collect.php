@@ -13,11 +13,6 @@ class Collect extends Controller
         return "index";
     }
 
-    /**
-     * @param $id
-     * @return string
-     * @route('col/:id')
-     */
     public function read($id)
     {
         return 'read is  '.$id;

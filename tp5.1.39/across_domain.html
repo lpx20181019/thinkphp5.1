@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>跨域请求测试</title>
+    <script src="jquery-3.4.1.min.js"></script>
+</head>
+<body>
+<input type="submit" id="button" value="确定">
+<div id="show"></div>
+
+
+<script>
+    $('#button').click(function () {
+        $.get('localhost:8000/col/10.html',{},function (result) {
+            $('#show').html(result);
+        })
+    })
+</script>
+</body>
+</html>
